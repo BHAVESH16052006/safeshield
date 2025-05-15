@@ -1,0 +1,122 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #181818 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .header_area,
+.dark-mode .footer-social-icon,
+.dark-mode .footer-menu,
+.dark-mode .footer-text {
+    background-color: #232323 !important;
+    color: #fff !important;
+}
+
+.dark-mode .navbar,
+.dark-mode .navbar-brand,
+.dark-mode .nav-link {
+    background-color: #232323 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .get-start-area,
+.dark-mode .special-area,
+.dark-mode .analytics-dashboard,
+.dark-mode .app-screenshots-area,
+.dark-mode .pricing-plane-area,
+.dark-mode .our-Team-area,
+.dark-mode .footer-contact-area,
+.dark-mode .cool_facts_area,
+.dark-mode .video-section,
+.dark-mode .section-heading,
+.dark-mode .prediction-result.card,
+.dark-mode .card,
+.dark-mode .results-container,
+.dark-mode .report-content {
+    background-color: #232323 !important;
+    color: #fff !important;
+    border-color: #444 !important;
+}
+
+.dark-mode .form-control,
+.dark-mode .input-group,
+.dark-mode .table,
+.dark-mode .table thead th,
+.dark-mode .table tbody td {
+    background-color: #232323 !important;
+    color: #fff !important;
+    border-color: #444 !important;
+}
+
+.dark-mode .file-upload-label,
+.dark-mode .btn,
+.dark-mode .btn-outline-primary,
+.dark-mode .btn-outline-secondary,
+.dark-mode .btn-outline-info,
+.dark-mode .btn-success {
+    background-color: #232323 !important;
+    color: #fff !important;
+    border-color: #444 !important;
+}
+
+.dark-mode .btn:hover,
+.dark-mode .btn:focus {
+    background-color: #444 !important;
+    color: #fff !important;
+}
+
+.dark-mode .progress {
+    background-color: #444 !important;
+}
+
+.dark-mode .confidence-bar {
+    background-color: #4CAF50 !important;
+}
+
+.dark-mode .result-text.spam {
+    color: #ff6b6b !important;
+}
+.dark-mode .result-text.ham {
+    color: #4CAF50 !important;
+}
+
+.dark-mode .report-modal {
+    background: rgba(0,0,0,0.85) !important;
+}
+.dark-mode .report-content {
+    background: #232323 !important;
+    color: #fff !important;
+}
+
+.dark-mode .line-shape {
+    background: #4CAF50 !important;
+}
+
+.dark-mode .section-heading h2,
+.dark-mode .section-heading {
+    color: #fff !important;
+}
+
+.dark-mode .chart-container {
+    background-color: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.dark-mode-toggle button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.dark-mode-toggle button:hover {
+    transform: scale(1.05);
+} 

@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Safe Shield</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../static/img/core-img/message.png">
+
+    <!-- Core Stylesheet -->
+    <link href="../static/style.css" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="../static/css/responsive.css" rel="stylesheet">
+
+    <!-- Dark Mode CSS -->
+    <link href="../static/css/dark-mode.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+        .feature-card {
+            transition: transform 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .btn-primary {
+            background-color: #000DFF;
+            border-color: #000DFF;
+        }
+        .btn-primary:hover {
+            background-color: #6B73FF;
+            border-color: #6B73FF;
+        }
+        .advanced-analysis {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .sentiment-analysis .progress {
+            height: 8px;
+            margin: 0.5rem 0;
+        }
+        .url-item, .attachment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 5px;
+        }
+        .badge {
+            padding: 0.5rem 0.8rem;
+            font-weight: 500;
+        }
+        .reasons-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .reasons-list li {
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+        .keywords-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+
+<body class="light-mode">
+    <!-- Animated Gradient Background -->
+    <div class="animated-bg"></div>
+    <!-- Particle Canvas -->
+    <canvas id="particles-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;"></canvas>
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="colorlib-load"></div>
+    </div>
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header_area animated gradient-navbar" id="mainNavbar">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <!-- Menu Area Start -->
+                <div class="col-12 col-lg-10">
+                    <div class="menu_area">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+                            <!-- Logo -->
+                            <a class="navbar-brand" href="#" style="display: flex; align-items: center; margin-right: 12px;">
+                                <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="shield3dblue" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#ba68c8"/>
+                                            <stop offset="100%" stop-color="#8e24aa"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M32 4L8 14V28C8 46 32 60 32 60C32 60 56 46 56 28V14L32 4Z" fill="url(#shield3dblue)" stroke="#1976d2" stroke-width="2" />
+                                    <ellipse cx="32" cy="32" rx="10" ry="16" fill="#90caf9" opacity="0.5"/>
+                                </svg>
+                                <span style="font-weight:bold;font-size:1.5rem;margin-left:8px;">Safe Shield</span>
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ca-navbar" aria-controls="ca-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                            <!-- Menu Area -->
+                            <div class="collapse navbar-collapse" id="ca-navbar">
+                                <ul class="navbar-nav ml-auto" id="nav">
+                                    <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#features">Technology</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                                </ul>
+                                <div class="sing-up-button d-lg-none">
+                                    <a href="{{ url_for('static', filename='TEAM17.pdf') }}" target="_blank">Project Report</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <!-- Project Report btn -->
+                <div class="col-12 col-lg-2">
+                    <div class="sing-up-button d-none d-lg-block mb-2">
+                        <a href="{{ url_for('static', filename='TEAM17.pdf') }}" target="_blank">Project Report</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- Mobile Project Report and Dark Mode Toggle -->
+    <div class="sing-up-button d-lg-none mb-2">
+        <a href="{{ url_for('static', filename='TEAM17.pdf') }}" target="_blank">Project Report</a>
+    </div>
+
+    <!-- ***** Wellcome Area Start ***** -->
+    <section class="wellcome_area clearfix" id="home">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 col-md-8 mx-auto">
+                    <div class="wellcome-heading text-center mb-4">
+                        <h2>SafeShield</h2>
+                        <p>Everything You Need. To Start checking your Spam Emails</p>
+                    </div>
+                    <div class="get-start-area glass-card neumorph-card">
+                        <!-- 3D Animated Shield -->
+                        <div class="shield-3d-container">
+                            <svg id="animatedShield" width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="shield3dgreen" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#43e97b"/>
+                                        <stop offset="100%" stop-color="#38f9d7"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M32 4L8 14V28C8 46 32 60 32 60C32 60 56 46 56 28V14L32 4Z" fill="url(#shield3dgreen)" stroke="#1de982" stroke-width="2" />
+                                <ellipse cx="32" cy="32" rx="10" ry="16" fill="#b9f6ca" opacity="0.5"/>
+                            </svg>
+                        </div>
+                        <!-- Form Start -->
+                        <form action="{{ url_for('predict')}}" method="POST" class="form-inline" enctype="multipart/form-data">
+                            <div class="form-group w-100">
+                                <div class="input-group mb-3 position-relative" style="position:relative; overflow:visible;">
+                                    <textarea name="comment" class="form-control pr-5 mic-textarea" id="comment" rows="4" placeholder="Enter Text Message*" required style="padding-right:56px;"></textarea>
+                                    <button type="button" id="micBtn" class="btn btn-outline-dark mic-btn-inside" title="Speak your message" style="position:absolute; top:8px; right:8px; z-index:10; padding:6px 10px;">
+                                        <i class="fa fa-microphone"></i>
+                                    </button>
+                                </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <div class="file-upload-wrapper mb-3">
+                                        <label for="file-upload" class="file-upload-label btn btn-outline-primary">
+                                            <i class="fa fa-paperclip"></i> Attach Email
+                                        </label>
+                                        <input type="file" id="file-upload" name="email_file" accept=".eml,.txt" class="d-none">
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center w-100">
+                                        <input type="submit" class="btn btn-primary btn-lg analyze-btn modern-btn mb-3" value="Analyze Email">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Form End -->
+                        <!-- Results Display -->
+                        <div id="results" class="results-container mt-4" style="display: none;">
+                            <div class="prediction-result card" id="predictionCard">
+                                <div class="card-body">
+                                    <h3 class="card-title">Prediction Result</h3>
+                                    <div class="confidence-meter mb-3">
+                                        <div class="progress">
+                                            <div class="confidence-bar progress-bar" role="progressbar" style="width: 0%"></div>
+                                        </div>
+                                        <span class="confidence-score">0%</span>
+                                    </div>
+                                    <div class="result-text h4"></div>
+                                    
+                                    <div class="d-flex justify-content-center gap-2 mt-3">
+                                        <button class="btn btn-outline-secondary me-2" id="copyResult"><i class="fa fa-copy"></i> Copy Result</button>
+                                        <button class="btn btn-outline-info me-2" id="downloadPDF"><i class="fa fa-file-pdf-o"></i> Download PDF</button>
+                                        <button class="btn btn-success" id="generateReport"><i class="fa fa-file-text"></i> Generate Report</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Loading spinner overlay -->
+                            <div id="loadingSpinner" style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.7);z-index:20;align-items:center;justify-content:center;">
+                                <div class="spinner-border text-primary" role="status" style="width:3rem;height:3rem;"></div>
+                            </div>
+                        </div>
+                        <!-- Export/Share buttons below prediction history table -->
+                        <div class="row mt-2 mb-4">
+                            <div class="col-12 d-flex justify-content-end gap-2">
+                                <button class="btn btn-outline-primary" id="exportCSV"><i class="fa fa-download"></i> Export CSV</button>
+                                <button class="btn btn-success" id="shareResult"><i class="fa fa-share-alt"></i> Share Result</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Wellcome Area End ***** -->
+
+    <!-- ***** Special Area Start ***** -->
+    <section class="special-area bg-white section_padding_100" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-4">
+                    <!-- Moved the image here as a visual intro to About -->
+                    <img src="../static/img/bg-img/1.1.png" alt="About esc visual" style="max-width:320px;width:100%;height:auto;display:inline-block;">
+                </div>
+                <div class="col-12">
+                    <!-- Section Heading Area -->
+                    <div class="section-heading text-center">
+                        <h2>About SS.</h2>
+                        <div class="line-shape"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Single Special Area -->
+                <div class="col-12 col-md-4">
+                    <div class="single-special text-center wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="single-icon">
+                            <i class="ti-mobile" aria-hidden="true"></i>
+                        </div>
+                        <h4>Easy to use</h4>
+                        <p>Pretty complex tools aembeded in simple designs and yet functional. Intended for regular users keeping their ease of use in mind.</p>
+                    </div>
+                </div>
+                <!-- Single Special Area -->
+                <div class="col-12 col-md-4">
+                    <div class="single-special text-center wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="single-icon">
+                            <i class="ti-ruler-pencil" aria-hidden="true"></i>
+                        </div>
+                        <h4>Aim</h4>
+                        <p>To identify new Potential Spam E-Mails from known & unknown sources.<br> This is what going to be a speciality of our product.</p>
+                    </div>
+                </div>
+                <!-- Single Special Area -->
+                <div class="col-12 col-md-4">
+                    <div class="single-special text-center wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="single-icon">
+                            <i class="ti-settings" aria-hidden="true"></i>
+                        </div>
+                        <h4>Powerful Technology</h4>
+                        <p>As spammers are getting smarter each day, this highly efficient Machine Learning Algorithm will help you tackle and knock out those Spammers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Special Description Area -->
+        <div class="special_description_area mt-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="special_description_img">
+                            <img src="../static/img/bg-img/2.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-5 ml-xl-auto">
+                        <div class="special_description_content">
+                            <h2>Our Best Spam-Gaurd for You!</h2>
+                            <p>Spamming is a big problem! Anyone who is connected to internet faces this problem now and then, but with Corporates, it becomes a serious problem. Phishing attacks, greedy traps and many create a havoc if not handled properly. <br>Our product E-Mail Spam Classifier is a solution for these Spams. Through our Intelligent Web- Based Product, you can find Spam E-Mails and can label them as Spam for future reference</p>
+                            <div class="app-download-area">
+                                <div class="app-download-btn wow fadeInUp" data-wow-delay="0.2s">
+                                    <!-- Google Store Btn -->
+                                    <a href="#">
+                                        <i class="fa fa-github"></i>
+                                        <p class="mb-0"><span>Project Code available on</span> GitHub</p>
+                                    </a>
+                                </div>
+                                <div class="app-download-btn wow fadeInDown" data-wow-delay="0.4s">
+                                    <!-- Apple Store Btn -->
+                                    <a href="#">
+                                        <i class="fa fa-dribbble"></i>
+                                        <p class="mb-0"><span>Hosted on</span> Firebase</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Special Area End ***** -->
+
+    <!-- ***** Awesome Features Start ***** -->
+    <section class="awesome-feature-area bg-white section_padding_0_50 clearfix" id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Heading Text -->
+                    <div class="section-heading text-center">
+                        <h2>Technology used</h2>
+                        <div class="line-shape"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Single Feature Start -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-feature">
+                        <i class="ti-layout" aria-hidden="true"></i>
+                        <h5>HTML</h5>
+                        <p>HTML (HyperText Markup Language) structures the content of the web application, providing the backbone for all user interface elements and ensuring accessibility and semantic clarity.</p>
+                    </div>
+                </div>
+                <!-- Single Feature Start -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-feature">
+                        <i class="ti-wand" aria-hidden="true"></i>
+                        <h5>Javascript</h5>
+                        <p>JavaScript enables dynamic interactivity, real-time feedback, speech-to-text, and seamless user experience by handling client-side logic and asynchronous communication with the backend.</p>
+                    </div>
+                </div>
+                <!-- Single Feature Start -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-feature">
+                        <i class="ti-pulse" aria-hidden="true"></i>
+                        <h5>Machine Learning</h5>
+                        <p>Machine Learning powers the spam detection engine, using a trained Naive Bayes model to analyze and classify emails/messages as spam or not, based on learned patterns from real data.</p>
+                    </div>
+                </div>
+                <!-- Single Feature Start -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-feature">
+                        <i class="ti-palette" aria-hidden="true"></i>
+                        <h5>CSS</h5>
+                        <p>CSS (Cascading Style Sheets) is used to style and layout the application, ensuring a visually appealing, responsive, and accessible interface across all devices and modes (including dark mode).</p>
+                    </div>
+                </div>
+                <!-- Single Feature Start -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-feature">
+                        <i class="ti-link" aria-hidden="true"></i>
+                        <h5>Flask</h5>
+                        <p>Flask is a lightweight Python web framework that powers the backend, handling routing, model inference, file uploads, and serving the web interface securely and efficiently.</p>
+                    </div>
+                </div>
+                <!-- Single Feature Start -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-feature">
+                        <i class="ti-server" aria-hidden="true"></i>
+                        <h5>Dataset</h5>
+                        <p>The dataset consists of thousands of labeled emails/messages (spam and ham), providing the real-world data needed to train and evaluate the machine learning model for accurate predictions.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ***** Awesome Features End ***** -->
+
+    <!-- ***** Video Area Start ***** -->
+    <div class="video-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Video Area Start -->
+                    <div class="video-area" style="background-image: url(../static/img/bg-img/video.png);">
+                        <div class="video-play-btn">
+                            <a href="#" class="video_btn" data-toggle="modal" data-target="#videoModal"><i class="fa fa-play" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Video Modal -->
+                    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4nTh3AP6knM?autoplay=0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Video Area End ***** -->
+
+    <!-- ***** Cool Facts Area Start ***** -->
+    <!-- Removed ML Model Accuracy and SS sections as requested -->
+    <!-- ***** Cool Facts Area End ***** -->
+
+    <!-- ***** App Screenshots Area Start ***** -->
+    <!-- Removed App Screenshots Area (ML Model Accuracy screenshot) as requested -->
+    <!-- ***** App Screenshots Area End *****====== -->
+
+    <!-- ***** Pricing Plane Area Start *****==== -->
+    <section class="pricing-plane-area section_padding_100_70 clearfix" id="pricing">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Heading Text  -->
+                    <div class="section-heading text-center">
+                        <h2>Dig-IN to Tech.</h2>
+                        <div class="line-shape"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row no-gutters">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <!-- Package Price  -->
+                    <div class="single-price-plan text-center">
+                        <!-- Package Text  -->
+                        <div class="package-plan">
+                            <h5>User</h5>
+                            <div class="ca-price d-flex justify-content-center">
+                                <h4>Interface</h4>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="package-description">
+                            <p>HTML</p>
+                            <p>CSS</p>
+                            <p>Javascript</p>
+                            <p>User-friendly</p>
+                            <p>Light Interface</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <!-- Package Price  -->
+                    <div class="single-price-plan text-center">
+                        <!-- Package Text  -->
+                        <div class="package-plan">
+                            <h5>Flask</h5>
+                            <div class="ca-price d-flex justify-content-center">
+                                
+                                <h4>Framework</h4>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="package-description">
+                            <p>Light-Weight</p>
+                            <p>Modular</p>
+                            <p>Flexible</p>
+                            <p>Version 3.6</p>
+                            <p>-</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <!-- Package Price  -->
+                    <div class="single-price-plan text-center">
+                        <!-- Package Text  -->
+                        <div class="package-plan">
+                            <h5>Machine Learing</h5>
+                            <div class="ca-price d-flex justify-content-center">
+                                
+                                <h4>Algorithm</h4>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="package-description">
+                            <p>Detection Model</p>
+                            <p>Tokenisation</p>
+                            <p>Naive Bayes Classifier</p>
+                            <p>High Accuracy</p>
+                            <p>High F1 Score</p>
+                        </div>
+                   </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <!-- Package Price  -->
+                    <div class="single-price-plan text-center">
+                        <!-- Package Text  -->
+                        <div class="package-plan">
+                            <h5>Extensive</h5>
+                            <div class="ca-price d-flex justify-content-center">
+                                
+                                <h4>Dataset</h4>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="package-description">
+                            <p>Labelled Data</p>
+                            <p>5000+ Messages</p>
+                            <p>Tagged as Spam &amp; Ham</p>
+                            <p>in Text Format</p>
+                            <p>Stored as .csv file</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Pricing Plane Area End ***** -->
+
+ 
+    <!-- ***** CTA Area Start ***** -->
+    <section class="our-monthly-membership section_padding_50 clearfix">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="membership-description">
+                        <h2>Download Full Project Report</h2>
+                        <p>Everything you need to know at One Place</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="get-started-button wow bounceInDown" data-wow-delay="0.5s">
+                        <a href="{{ url_for('static', filename='TEAM17.pdf') }}" target="_blank">Download Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** CTA Area End ***** -->
+
+    <!-- ***** Our Team Area Start ***** -->
+    <section class="our-Team-area bg-white section_padding_100_50 clearfix" id="team">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <!-- Heading Text  -->
+                    <div class="section-heading">
+                        <h2>Our Team</h2>
+                        <div class="line-shape"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="single-team-member">
+                        <div class="member-image">
+                            <img src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Brown&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=Default&mouthType=Smile&skinColor=Light" alt="Boy Avatar" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin:auto;">
+                            <div class="team-hover-effects">
+                                <div class="team-social-icon">
+                                    <a href="https://www.linkedin.com/in/lokesh-nukasani-584b712a2/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-text">
+                            <h4>NUKASANI LOKESH</h4>
+                            <p>IT-C 2nd Year<br>SAHE UNIVERSITY VIJAYAWADA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="single-team-member">
+                        <div class="member-image">
+                            <img src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Brown&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=Default&mouthType=Smile&skinColor=Light" alt="Boy Avatar" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin:auto;">
+                            <div class="team-hover-effects">
+                                <div class="team-social-icon">
+                                    <a href="https://www.linkedin.com/in/penneru-bhavesh-7b26b8308/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-text">
+                            <h4>PENNERU BHAVESH</h4>
+                            <p>IT-C 2nd Year<br>SAHE UNIVERSITY VIJAYAWADA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="single-team-member">
+                        <div class="member-image">
+                            <img src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Brown&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=Default&mouthType=Smile&skinColor=Light" alt="Boy Avatar" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin:auto;">
+                            <div class="team-hover-effects">
+                                <div class="team-social-icon">
+                                    <a href="https://www.linkedin.com/in/anil-kumar-thotakura-84421a337/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-text">
+                            <h4>THOTAKURA ANIL</h4>
+                            <p>IT-C 2nd Year<br>SAHE UNIVERSITY VIJAYAWADA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="single-team-member">
+                        <div class="member-image">
+                            <img src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Brown&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=Default&mouthType=Smile&skinColor=Light" alt="Boy Avatar" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin:auto;">
+                            <div class="team-hover-effects">
+                                <div class="team-social-icon">
+                                    <a href="https://www.linkedin.com/in/nagendra-turala-3758352a3/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-text">
+                            <h4>TURRALA NAGENDRA</h4>
+                            <p>IT-C 2nd Year<br>SAHE UNIVERSITY VIJAYAWADA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Our Team Area End ***** -->
+
+    <!-- ***** Contact Us Area End ***** -->
+
+    <!-- ***** Footer Area Start ***** -->
+    <footer class="footer-social-icon text-center section_padding_70 clearfix">
+        <!-- footer logo -->
+        <div class="footer-text">
+            <h2></h2>
+        </div>
+        <div class="footer-menu">
+            <nav>
+                <ul>
+                    <!-- Removed Project on GitHub link -->
+                </ul>
+            </nav>
+        </div>
+        <!-- Foooter Text-->
+        <!-- Removed copyright and design by team esc. -->
+    </footer>
+    <!-- ***** Footer Area Start ***** -->
+
+    <!-- Analytics Dashboard -->
+    <section class="analytics-dashboard section_padding_100" id="analytics">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>Analytics Dashboard</h2>
+                        <div class="line-shape"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="chart-container">
+                        <canvas id="spamDistributionChart" width="250" height="250" style="max-width:250px;max-height:250px;"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="chart-container">
+                        <canvas id="accuracyTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="prediction-history">
+                        <h3>Recent Predictions</h3>
+                        <div class="history-table">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Message</th>
+                                        <th>Result</th>
+                                        <th>Confidence</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="predictionHistory">
+                                    <!-- History will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jquery-2.2.4 JS -->
+    <script src="../static/js/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="../static/js/popper.min.js"></script>
+    <!-- Bootstrap-4 Beta JS -->
+    <script src="../static/js/bootstrap.min.js"></script>
+    <!-- All Plugins JS -->
+    <script src="../static/js/plugins.js"></script>
+    <!-- Slick Slider Js-->
+    <script src="../static/js/slick.min.js"></script>
+    <!-- Footer Reveal JS -->
+    <script src="../static/js/footer-reveal.min.js"></script>
+    <!-- Active JS -->
+    <script src="../static/js/active.js"></script>
+    <!-- Additional Scripts -->
+    <script src="../static/js/dark-mode.js"></script>
+    <script src="../static/js/analytics.js"></script>
+    <script src="../static/js/file-upload.js"></script>
+    <script src="../static/js/report-generator.js"></script>
+
+    <!-- Add jsPDF CDN for PDF download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../static/js/clipboard-pdf-speech-live.js"></script>
+
+    <!-- Add spinner CSS and animated glow -->
+    <style>
+    #loadingSpinner {
+        display: flex;
+    }
+    .prediction-result.glow-green {
+        box-shadow: 0 0 24px 4px #4caf50b0, 0 0 0 0 #fff;
+        transition: box-shadow 0.5s;
+    }
+    .prediction-result.glow-red {
+        box-shadow: 0 0 24px 4px #e53935b0, 0 0 0 0 #fff;
+        transition: box-shadow 0.5s;
+    }
+    .get-start-area {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 1rem;
+        font-size: 1rem;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .analyze-btn {
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        width: 200px;
+        margin-top: 0.5rem;
+    }
+    .analyze-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .file-upload-label {
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 200px;
+    }
+    .file-upload-label:hover {
+        background-color: #007bff;
+        color: white;
+    }
+    .mic-btn-inside {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 10;
+        padding: 6px 10px;
+    }
+    .mic-textarea {
+        padding-right: 56px !important;
+    }
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        background: transparent;
+        min-height: 100vh;
+        position: relative;
+        z-index: 1;
+    }
+    .animated-bg {
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        z-index: -2;
+        background: linear-gradient(270deg, #e3f9f6, #f8fafc, #e3f9f6, #43e97b, #38f9d7);
+        background-size: 200% 200%;
+        animation: gradientMove 8s ease-in-out infinite;
+    }
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    .glass-card.neumorph-card {
+        background: rgba(255,255,255,0.8);
+        box-shadow: 8px 8px 24px #d1e6e1, -8px -8px 24px #ffffff;
+        border-radius: 32px;
+        border: 1px solid rgba(255,255,255,0.18);
+        padding: 2.5rem 2rem 2rem 2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 2;
+        transition: box-shadow 0.3s;
+    }
+    .shield-3d-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1.2rem;
+        animation: floatShield 2.5s ease-in-out infinite;
+        z-index: 2;
+    }
+    #animatedShield.pulse {
+        animation: shieldPulse 0.7s;
+    }
+    @keyframes shieldPulse {
+        0% { transform: scale(1); filter: drop-shadow(0 0 0 #43e97b); }
+        50% { transform: scale(1.12); filter: drop-shadow(0 0 16px #43e97b88); }
+        100% { transform: scale(1); filter: drop-shadow(0 0 0 #43e97b); }
+    }
+    @keyframes floatShield {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-16px); }
+    }
+    .form-control {
+        border-radius: 16px;
+        border: 1px solid #e0e0e0;
+        padding: 1.1rem;
+        font-size: 1.08rem;
+        width: 100%;
+        margin-bottom: 1rem;
+        background: rgba(255,255,255,0.95);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        transition: box-shadow 0.2s;
+    }
+    .form-control:focus {
+        box-shadow: 0 0 0 2px #43e97b33;
+        border-color: #43e97b;
+        outline: none;
+    }
+    .analyze-btn.modern-btn, .btn.modern-btn {
+        padding: 0.9rem 2.5rem;
+        font-size: 1.15rem;
+        border-radius: 24px;
+        background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+        color: #fff;
+        border: none;
+        box-shadow: 0 4px 16px rgba(67,233,123,0.12);
+        transition: transform 0.15s, box-shadow 0.15s, background 0.3s;
+        margin-top: 0.7rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .analyze-btn.modern-btn:hover, .analyze-btn.modern-btn:focus, .btn.modern-btn:hover, .btn.modern-btn:focus {
+        transform: translateY(-2px) scale(1.04);
+        box-shadow: 0 8px 24px rgba(67,233,123,0.18);
+        background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+        color: #fff;
+    }
+    .btn.modern-btn:active::after, .analyze-btn.modern-btn:active::after {
+        content: '';
+        position: absolute;
+        left: 50%; top: 50%;
+        width: 120%; height: 120%;
+        background: rgba(67,233,123,0.18);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        animation: ripple 0.5s linear;
+        z-index: 1;
+    }
+    @keyframes ripple {
+        0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0.7; }
+        100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+    }
+    .file-upload-label {
+        padding: 0.8rem 1.5rem;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 200px;
+        background: #f3f7fa;
+        border: 1px solid #e0e0e0;
+        color: #1976d2;
+        font-weight: 500;
+    }
+    .file-upload-label:hover {
+        background: #e3f9f6;
+        color: #43e97b;
+        border-color: #43e97b;
+    }
+    .mic-btn-inside {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 10;
+        padding: 6px 10px;
+        border-radius: 50%;
+        background: #f3f7fa;
+        border: 1px solid #e0e0e0;
+        color: #1976d2;
+        transition: background 0.2s, color 0.2s;
+    }
+    .mic-btn-inside:hover, .mic-btn-inside:focus {
+        background: #43e97b;
+        color: #fff;
+        border-color: #43e97b;
+    }
+    .mic-textarea {
+        padding-right: 56px !important;
+    }
+    @media (max-width: 600px) {
+        .glass-card {
+            padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+        }
+        .file-upload-label, .analyze-btn.modern-btn {
+            width: 100%;
+        }
+    }
+    .gradient-navbar {
+        background: linear-gradient(90deg, #ce57e6 0%, #6229f2 100%);
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: box-shadow 0.3s;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    .gradient-navbar.scrolled {
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.25);
+    }
+    .navbar-nav .nav-link {
+        position: relative;
+        font-weight: 600;
+        font-size: 1.08rem;
+        padding: 0.7rem 1.5rem;
+        color: #fff !important;
+        background: transparent;
+        border-radius: 0;
+        margin: 0 0.2rem;
+        letter-spacing: 0.5px;
+        transition: color 0.2s;
+    }
+    .navbar-nav .nav-link:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 8px;
+        width: 0;
+        height: 3px;
+        background: #fff;
+        border-radius: 2px;
+        transition: width 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    .navbar-nav .nav-link:hover:after, .navbar-nav .nav-link.active:after {
+        width: 100%;
+    }
+    .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
+        color: #e0e0e0 !important;
+        background: transparent !important;
+        text-decoration: none;
+    }
+    .navbar-nav .nav-link.active {
+        color: #fff !important;
+        font-weight: 700;
+        background: transparent !important;
+    }
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: #fff !important;
+        letter-spacing: 1px;
+    }
+    @media (max-width: 991px) {
+        .navbar-nav .nav-link {
+            padding: 0.7rem 1rem;
+            font-size: 1.05rem;
+        }
+    }
+    .modal-content {
+        background: transparent;
+        border: none;
+    }
+    .modal-body {
+        padding: 0;
+    }
+    .close {
+        position: absolute;
+        right: -30px;
+        top: -30px;
+        color: #fff;
+        opacity: 1;
+        text-shadow: none;
+        font-size: 2rem;
+    }
+    .close:hover {
+        color: #fff;
+        opacity: 0.8;
+    }
+    </style>
+
+    <!-- Add languagedetect library -->
+    <script src="https://cdn.jsdelivr.net/npm/languagedetect@1.1.0/language-detect.min.js"></script>
+    <script>
+    // --- Particle effect behind shield ---
+    const canvas = document.getElementById('particles-bg');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let w = window.innerWidth, h = window.innerHeight;
+        canvas.width = w; canvas.height = h;
+        let particles = Array.from({length: 24}, () => ({
+            x: Math.random()*w, y: Math.random()*h*0.4+40, r: Math.random()*2+1, dx: (Math.random()-0.5)*0.2, dy: (Math.random()-0.5)*0.2, o: Math.random()*0.5+0.3
+        }));
+        function drawParticles() {
+            ctx.clearRect(0,0,w,h);
+            for (const p of particles) {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, 2*Math.PI);
+                ctx.fillStyle = `rgba(67,233,123,${p.o})`;
+                ctx.shadowColor = '#43e97b';
+                ctx.shadowBlur = 8;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+        function updateParticles() {
+            for (const p of particles) {
+                p.x += p.dx; p.y += p.dy;
+                if (p.x < 0 || p.x > w) p.dx *= -1;
+                if (p.y < 0 || p.y > h*0.5) p.dy *= -1;
+            }
+        }
+        function animate() {
+            drawParticles();
+            updateParticles();
+            requestAnimationFrame(animate);
+        }
+        animate();
+        window.addEventListener('resize', () => {
+            w = window.innerWidth; h = window.innerHeight;
+            canvas.width = w; canvas.height = h;
+        });
+    }
+    // --- Shield pulse on result ---
+    window.animateShieldPulse = function() {
+        const shield = document.getElementById('animatedShield');
+        if (shield) {
+            shield.classList.remove('pulse');
+            void shield.offsetWidth; // trigger reflow
+            shield.classList.add('pulse');
+        }
+    }
+    // --- Button ripple effect ---
+    document.querySelectorAll('.modern-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = e.offsetX + 'px';
+            ripple.style.top = e.offsetY + 'px';
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 500);
+        });
+    });
+    // Navbar shadow on scroll
+    window.addEventListener('scroll', function() {
+        const nav = document.getElementById('mainNavbar');
+        if (window.scrollY > 10) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+    // Active link highlight (simple hash-based)
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    // Stop video when modal is closed
+    $('#videoModal').on('hidden.bs.modal', function () {
+        var iframe = $(this).find('iframe');
+        iframe.attr('src', iframe.attr('src'));
+    });
+    // Update the prediction display function
+    function updatePredictionDisplay(data) {
+        const resultCard = document.getElementById('predictionCard');
+        const resultText = document.querySelector('.result-text');
+        const confidenceBar = document.querySelector('.confidence-bar');
+        const confidenceScore = document.querySelector('.confidence-score');
+        
+        // Basic prediction display
+        resultText.textContent = data.prediction;
+        confidenceBar.style.width = data.confidence;
+        confidenceScore.textContent = data.confidence;
+        
+        // Add appropriate glow effect
+        resultCard.classList.remove('glow-green', 'glow-red');
+        if (data.prediction === 'Spam') {
+            resultCard.classList.add('glow-red');
+        } else {
+            resultCard.classList.add('glow-green');
+        }
+    }
+    </script>
+</body>
+
+</html>
